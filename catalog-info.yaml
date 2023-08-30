@@ -1,0 +1,48 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name:  seekersom3-poi-map-app-dev
+  annotations:
+    argocd/app-name:  seekersom3-poi-map-app-dev
+    backstage.io/kubernetes-id:  seekersom3-poi-map-app
+    backstage.io/kubernetes-namespace:  seekersom3
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: rhdh-deploy/ seekersom3-frontend
+    janus-idp.io/tekton-enabled: 'true'
+  tags:
+    - typescript
+    - angular
+    - workshop
+  links:
+    - url: https://console-openshift-console.apps.a1jxqhzp.eastus2.aroapp.io/dev-pipelines/ns/ seekersom3/
+      title: Pipelines
+      icon: web
+    - url: https://console-openshift-console.apps.a1jxqhzp.eastus2.aroapp.io/k8s/ns/ seekersom3/deployments/ seekersom3-poi-map-app
+      title: Deployment
+      icon: web
+    - url: https://devspaces.apps.a1jxqhzp.eastus2.aroapp.io/#https://github.com/rhdh-deploy/ seekersom3-frontend?che-editor=che-incubator/che-code/latest&devfilePath=.devfile-vscode.yaml
+      title: OpenShift Dev Spaces (VS Code)
+      icon: web
+    - url: http:// seekersom3-poi-map-app- seekersom3.apps.a1jxqhzp.eastus2.aroapp.io
+      title: Map
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: "user:default/seekersom3"
+  system: workshop-system- seekersom3
+  consumesApis:
+    - gateway-api- seekersom3
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: workshop-system- seekersom3
+  tags:
+    - backstage
+    - janus-idp
+    - openshift
+    - workshop
+    - rh-summit
+spec:
+  owner: "user:default/seekersom3"
